@@ -21,3 +21,4 @@ Requires-Dist: scipy==1.4.1
 Requires-Dist: six==1.13.0
 Requires-Dist: Werkzeug==0.16.0
 Requires-Dist: wincertstore==0.2
+Requires-Dist: catboost
