@@ -13,6 +13,7 @@ from src.exception import CustomException
 
 def save_object(file_path, obj):
     try:
+
         dir_path = os.path.dirname(file_path)
 
         os.makedirs(dir_path, exist_ok=True)
@@ -30,6 +31,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
         results = []
 
         for i in range(len(list(models))):
+
             model_name = list(models.keys())[i]
             model = list(models.values())[i]
             parameters = param.get(model_name, {})

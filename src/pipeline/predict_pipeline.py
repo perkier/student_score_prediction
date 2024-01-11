@@ -2,6 +2,7 @@ import sys
 import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
+import os
 
 
 class PredictPipeline:
@@ -13,8 +14,15 @@ class PredictPipeline:
 
         try:
 
-            model_path = '..\\components\\artifacts\\model.pkl'
-            preprocessor_path = '..\\components\\artifacts\\preprocessor.pkl'
+            # Get the directory of the current script
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+
+            model_path_relative = os.path.join('..', 'components', 'artifacts', 'model.pkl')
+            preprocessor_path_relative = os.path.join('..', 'components', 'artifacts', 'proprocessor.pkl')
+
+            # Get the absolute path using the relative path
+            model_path = os.path.abspath(os.path.join(script_dir, model_path_relative))
+            preprocessor_path = os.path.abspath(os.path.join(script_dir, preprocessor_path_relative))
 
             print("Before Loading")
 
@@ -38,7 +46,7 @@ class CustomData:
     def __init__(self,
                  gender: str,
                  race_ethnicity: str,
-                 parental_level_of_education,
+                 parental_level_of_education: str,
                  lunch: str,
                  test_preparation_course: str,
                  reading_score: int,
