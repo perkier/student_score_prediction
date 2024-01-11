@@ -32,8 +32,13 @@ class DataIngestion:
 
         try:
 
-            # Specify the relative path to the file from the parent directory
-            file_path = '..\\..\\data\\stud.csv'
+            # Get the directory of the current script
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+
+            file_path_relative = os.path.join('..','..', 'data', 'stud.csv')
+
+            # Get the absolute path using the relative path
+            file_path = os.path.abspath(os.path.join(script_dir, file_path_relative))
 
             df = pd.read_csv(file_path)
             logging.info('Read the dataset as dataframe')
